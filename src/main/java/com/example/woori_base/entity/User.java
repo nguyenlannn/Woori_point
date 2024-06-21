@@ -1,25 +1,17 @@
 package com.example.woori_base.entity;
 
-import jakarta.persistence.Column;
+import com.example.woori_base.enums.CusIdNoCdEnum;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Data
 public class User {
-    @Column(length = 8)
-    private String tmsDt;
-    @Column(length = 6)
-    private String tmsTm;
-    @Column(length = 20)
-    private String trnSrno;
-    @Column(length = 3)
-    private String prrstDscd;
-    private String actNo;
-    private Integer linkType;
-    private String telNo;
-    private String cusNm;
-    private String cusIdNoCd;
-    private String cusIdNo;
-    private String checkSum;
+    private String cusNm;//tên khách hàng//NGUYEN VAN A
+    private String telNo;//sđt khách hàng
+    private String actNo; //số tài khoản/ thẻ của khách hàng
+    private CusIdNoCdEnum cusIdNoCd;//loại id
+    private String cusIdNo; //số id thẻ
 }

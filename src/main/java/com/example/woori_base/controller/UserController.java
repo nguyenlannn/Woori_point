@@ -5,9 +5,7 @@ import com.example.woori_base.dto.req.LinkReq;
 import com.example.woori_base.dto.req.VerifyLinkReq;
 import com.example.woori_base.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController// tầng controller xử lí các yêu cầu
 @RequiredArgsConstructor//annotation tiêm
@@ -17,15 +15,16 @@ public class UserController {
 
 //liên kết tài khoản/thẻ của khách hàng
     @PostMapping("/link")
+//    @RequestMapping(value = "/link", method = RequestMethod.POST) cách cũ
     public BaseRespon link(@RequestBody LinkReq linkReq){
-         userService.postLink(linkReq);
-         return BaseRespon.success("Liên kết tài khoản/thẻ thành công");
+         return BaseRespon.success("Liên kết tài khoản/thẻ thành công",
+                 userService.postLink(linkReq));
     }
 
 //xác thực liên kết
     @PostMapping("/verify-link")
     public BaseRespon verifyLink(@RequestBody VerifyLinkReq verifyLinkReq){
-        userService.verifyLink(verifyLinkReq);
-        return BaseRespon.success("Xác thực liên kết thành công");
+        return BaseRespon.success("Xác thực liên kết thành công",
+                userService.verifyLink(verifyLinkReq) );
     }
 }
