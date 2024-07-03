@@ -3,8 +3,12 @@ package com.example.woori_base.controller;
 import com.example.woori_base.base.BaseRespon;
 import com.example.woori_base.dto.req.*;
 import com.example.woori_base.service.UserService;
+import com.example.woori_base.until.ApiCallUntil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 
 @RestController// tầng controller xử lí các yêu cầu
 @RequiredArgsConstructor//annotation tiêm
@@ -12,12 +16,44 @@ public class UserController {
 
     private final UserService userService;
 
+    @Autowired
+    private ApiCallUntil apiCallUntil;
+
+    //test okhttp
+    @GetMapping("/employee")
+    public String getExample() {
+        String apiUrl = "https://dummy.restapiexample.com/api/v1/employees";
+        try {
+            String apiResponse = apiCallUntil.makeGetRequest(apiUrl);
+            return "GET Response: " + apiResponse;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "While making GET request, getting Error: " + e.getMessage();
+        }
+    }
+
+    //test okhttp
+    @PostMapping("/create")
+    public String postExample() {
+        String apiUrl = "https://dummy.restapiexample.com/api/v1/create";
+
+        String requestBody = "{\'name\': \'test\',\'salary\': \'123\',\'age\': \'23\',\'id\': \'25\' }";
+
+        try {
+            String apiResponse = apiCallUntil.makePostRequest(apiUrl, requestBody);
+            return "POST Response: " + apiResponse;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "While making POST request, getting Error: " + e.getMessage();
+        }
+    }
+
     //liên kết tài khoản/thẻ của khách hàng
     @PostMapping("/link")
-//    @RequestMapping(value = "/link", method = RequestMethod.POST) cách cũ
-    public BaseRespon link(@RequestBody LinkReq linkReq) {
+////    @RequestMapping(value = "/link", method = RequestMethod.POST) cách cũ
+    public BaseRespon link(String apiUrl, @RequestBody LinkReq linkReq) {
         return BaseRespon.success("Liên kết tài khoản/thẻ thành công",
-                userService.postLink(linkReq));
+                userService.postLink(apiUrl, linkReq));
     }
 
     //xác thực liên kết
@@ -43,28 +79,28 @@ public class UserController {
 
     //xác thực giao dịch nạp ví của api trên
     @PostMapping("/verify-otp")
-    public BaseRespon verifyOtp(@RequestBody VerifyOtpReq verifyOtpReq){
+    public BaseRespon verifyOtp(@RequestBody VerifyOtpReq verifyOtpReq) {
         return BaseRespon.success("Xác thực giao dịch thành công",
                 userService.verifyOtp(verifyOtpReq));
     }
 
     //api giao dịch nạp ví và giao dịch rút ví-phân biệt qua mã xử lí prrstDscd
     @PostMapping("/topup")
-    public BaseRespon topUp(@RequestBody TopupReq topupReq){
+    public BaseRespon topUp(@RequestBody TopupReq topupReq) {
         return BaseRespon.success("mmm",
                 userService.topUp(topupReq));
     }
 
     //api truy vấn trạng thái giao dịch nạp/rút
     @PostMapping("/check-status")
-    public BaseRespon checkStatus(@RequestBody CheckStatusReq checkStatusReq){
+    public BaseRespon checkStatus(@RequestBody CheckStatusReq checkStatusReq) {
         return BaseRespon.success("Xxx",
                 userService.checkStatus(checkStatusReq));
     }
 
     //api check số dư tài khoản đối tác
     @PostMapping("/balance")
-    public BaseRespon balance(@RequestBody BalanceReq balanceReq){
+    public BaseRespon balance(@RequestBody BalanceReq balanceReq) {
         return BaseRespon.success("nnn",
                 userService.balance(balanceReq));
     }

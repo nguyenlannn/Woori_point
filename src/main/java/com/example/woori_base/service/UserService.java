@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface UserService {
-    LinkRes postLink(LinkReq linkReq);
+    LinkRes postLink(String apiUrl, LinkReq linkReq);
 
     VerifyLinkRes verifyLink(VerifyLinkReq verifyLinkReq);
 
