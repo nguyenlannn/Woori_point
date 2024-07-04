@@ -2,6 +2,8 @@ package com.example.woori_base.entity;
 
 import com.example.woori_base.enums.CusIdNoCdEnum;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.Getter;
@@ -16,6 +18,7 @@ import java.util.Date;
 public class PartnerEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int partnerId;
     private String cusNm;//tên khách hàng//NGUYEN VAN A
     private String telNo;//sđt khách hàng

@@ -13,7 +13,7 @@ public class HandlerException {
 
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<ErrorResponse> handleBadRequestException(com.example.woori_base.exception.BadRequestException e) {
-        ErrorResponse errorResponse=new ErrorResponse(400, e.getMessage(), e.getData());
+        ErrorResponse errorResponse=new ErrorResponse(e.getErrorCode(), e.getMessage(), e.getData());
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 

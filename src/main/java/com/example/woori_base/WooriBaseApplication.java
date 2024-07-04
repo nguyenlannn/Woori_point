@@ -1,36 +1,94 @@
 package com.example.woori_base;
 
-import com.example.woori_base.until.HeaderGenerator;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.XML;
+import com.example.woori_base.until.ChecksumUntil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.nio.charset.StandardCharsets;
+import java.security.*;
+import java.util.Base64;
 
 @SpringBootApplication
 public class WooriBaseApplication {
 
-	public static void main(String[] args) throws JsonProcessingException {
+	private ChecksumUntil checksumUntil;
+
+	public static KeyPair generateRSAKeyPair() throws NoSuchAlgorithmException {
+		KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
+		keyGen.initialize(2048);
+		return keyGen.generateKeyPair();
+	}
+
+	// Tạo checksum từ chữ ký người dùng và thông tin request
+	public static String generateChecksum(String userSignature, String requestData) {
+		return userSignature + requestData;
+	}
+
+	// Mã hóa checksum bằng thuật toán SHA256WithRSA
+	public static String encryptChecksum(String checksum, PrivateKey privateKey) throws Exception {
+		MessageDigest digest = MessageDigest.getInstance("SHA-256");
+		byte[] hashedData = digest.digest(checksum.getBytes(StandardCharsets.UTF_8));
+		Signature signature = Signature.getInstance("SHA256withRSA");
+		signature.initSign(privateKey);
+		signature.update(hashedData);
+		byte[] signedHash = signature.sign();
+		return Base64.getEncoder().encodeToString(signedHash);
+	}
+
+	// Giải mã và xác minh checksum bằng thuật toán SHA256WithRSA
+	public static boolean verifyChecksum(String checksum, String encryptedChecksum, PublicKey publicKey) throws Exception {
+		Signature publicSignature = Signature.getInstance("SHA256withRSA");
+		publicSignature.initVerify(publicKey);
+		publicSignature.update(checksum.getBytes(StandardCharsets.UTF_8));
+
+		byte[] signatureBytes = Base64.getDecoder().decode(encryptedChecksum);
+		return publicSignature.verify(signatureBytes);
+	}
+
+	public static void main(String[] args) {
 		SpringApplication.run(WooriBaseApplication.class, args);
 
-
-		String chuoi="0000083700000446WGSS20230719134329961DMCEAPI01010090000APIMCE01D202307191343299610087275001VP100 NN00W5970001SMCIG02200000<root dataType=\"OUT\"><T275001VResponse seq=\"1\" device=\"TM\" scrNo=\"121101M\" emitYn=\"N\"><params><msgTrno>00000623</msgTrno><msgDscd>EW001</msgDscd><apCusNo>VNI001</apCusNo><tmsDt>20230719</tmsDt><tmsTm>134329</tmsTm><trnSrno>20230625104623487290</trnSrno><refNo>26311762487055401717</refNo><rspCd>0000</rspCd><errEtc>Process is completed</errEtc></params></T275001VResponse></root>";
+		//mẫu cắt chuỗi
+		String chuoi = "WGSS20240704110907307DMCEAPI01010068\n" +
+				"0000076100000446WGSS20240704110907364DMCEAPI01010065000APIMCE01D                                                                                                                                             20240704110907364                 0087275001VQ100 NN00W5970001  SMCIG022                          00                                                                                                                            00                              0<root dataType=\"IN\"><275020VRequest  seq=\"1\" device=\"TM\"><params><msgTrno>BRAND1</msgTrno><msgDscd>EW008</msgDscd><apCusNo>MGV01</apCusNo><tmsDt>20230803</tmsDt><tmsTm>053104</tmsTm><trnSrno>20230625104623487295</trnSrno><prrstDscd>401</prrstDscd><actNo>100300005068</actNo></params></275020VRequest></root>\n";
 		int start = chuoi.indexOf("<params>");
-		int end = chuoi.indexOf("</T275001VResponse>");
-		String chuoiCon = chuoi.substring(start,end);
+		int end = chuoi.indexOf("</params>");
+		String chuoiCon = chuoi.substring(start+"<params>".length(), end);
 		System.out.println(chuoiCon);
 
-
 //  chuyển từ xml sang json bằng dependency json
+//		try {
+//			JSONObject json = XML.toJSONObject(chuoiCon); // converts xml to json
+//			String jsonPrettyPrintString = json.toString(4); // json pretty print
+//			System.out.println(jsonPrettyPrintString);
+//
+//		} catch(JSONException je) {
+//			System.out.println(je.toString());
+//		}
 		try {
-			JSONObject json = XML.toJSONObject(chuoiCon); // converts xml to json
-			String jsonPrettyPrintString = json.toString(4); // json pretty print
-			System.out.println(jsonPrettyPrintString);
+			// Tạo cặp khóa RSA
+			KeyPair keyPair = generateRSAKeyPair();
+			PrivateKey privateKey = keyPair.getPrivate();
+			PublicKey publicKey = keyPair.getPublic();
 
-		} catch(JSONException je) {
-			System.out.println(je.toString());
+			// Dữ liệu ví dụ
+			String userSignature = "20240704154915202306251046234872907902168128444023556800007902168128444023556879089";
+			String requestData = "Process is completed";
+
+			// Tạo checksum
+			String checksum = generateChecksum(userSignature, requestData);
+//
+			// Mã hóa checksum
+			String encryptedChecksum = encryptChecksum(checksum, privateKey);
+			System.out.println("Checksum: " + checksum);
+			System.out.println("Encrypted Checksum: " + encryptedChecksum);
+
+			// Giải mã và xác minh checksum
+			boolean isVerified = verifyChecksum(checksum, encryptedChecksum, publicKey);
+			System.out.println("Checksum verified: " + isVerified);
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }

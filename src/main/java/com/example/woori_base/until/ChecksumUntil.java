@@ -1,4 +1,5 @@
 package com.example.woori_base.until;
+
 import java.nio.charset.StandardCharsets;
 import java.security.*;
 import java.util.Base64;
@@ -25,5 +26,14 @@ public class ChecksumUntil {
 
         byte[] signature = privateSignature.sign();
         return Base64.getEncoder().encodeToString(signature);
+    }
+    //giải mã và verify chữ kí của mã checksum
+    public static boolean verifyChecksum(String checksum, String encryptedChecksum, PublicKey publicKey) throws Exception {
+        Signature publicSignature = Signature.getInstance("SHA256withRSA");
+        publicSignature.initVerify(publicKey);
+        publicSignature.update(checksum.getBytes(StandardCharsets.UTF_8));
+
+        byte[] signatureBytes = Base64.getDecoder().decode(encryptedChecksum);
+        return publicSignature.verify(signatureBytes);
     }
 }

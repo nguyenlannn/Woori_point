@@ -1,6 +1,8 @@
 package com.example.woori_base.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.Getter;
@@ -14,6 +16,7 @@ import java.util.Date;
 @Entity(name = "verify code")
 public class VerifyCodeEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer code;
     private Date createAt;

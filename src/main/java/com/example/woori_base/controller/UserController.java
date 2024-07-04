@@ -1,10 +1,13 @@
 package com.example.woori_base.controller;
 
-import com.example.woori_base.base.BaseRespon;
 import com.example.woori_base.dto.req.*;
+import com.example.woori_base.dto.res.*;
 import com.example.woori_base.service.UserService;
 import com.example.woori_base.until.ApiCallUntil;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +18,8 @@ import java.io.IOException;
 public class UserController {
 
     private final UserService userService;
+
+    private static final Logger logger = LogManager.getLogger(UserController.class);
 
     @Autowired
     private ApiCallUntil apiCallUntil;
@@ -51,57 +56,52 @@ public class UserController {
     //liên kết tài khoản/thẻ của khách hàng
     @PostMapping("/link")
 ////    @RequestMapping(value = "/link", method = RequestMethod.POST) cách cũ
-    public BaseRespon link(String apiUrl, @RequestBody LinkReq linkReq) {
-        return BaseRespon.success("Liên kết tài khoản/thẻ thành công",
-                userService.postLink(apiUrl, linkReq));
+    public LinkRes link(@RequestParam String apiUrl, @RequestBody @Valid LinkReq linkReq) {
+
+        logger.info("Info level log example");
+
+        return userService.postLink(apiUrl, linkReq);
     }
 
     //xác thực liên kết
     @PostMapping("/verify-link")
-    public BaseRespon verifyLink(@RequestBody VerifyLinkReq verifyLinkReq) {
-        return BaseRespon.success("Xác thực liên kết thành công",
-                userService.verifyLink(verifyLinkReq));
+    public VerifyLinkRes verifyLink(@RequestBody VerifyLinkReq verifyLinkReq) {
+        return userService.verifyLink(verifyLinkReq);
     }
 
     //hủy liên kết tài khoản ví với tài khoản/thẻ
     @PostMapping("/unlink")
-    public BaseRespon unlink(@RequestBody UnlinkReq unlinkReq) {
-        return BaseRespon.success("Hủy liên kết thành công",
-                userService.unlink(unlinkReq));
+    public UnlinkRes unlink(@RequestBody UnlinkReq unlinkReq) {
+        return userService.unlink(unlinkReq);
     }
 
     //Giao dịch nạp ví phát sinh với số tiền lớn hơn 1M-sử dụng mã otp
     @PostMapping("/request-topup")
-    public BaseRespon requestTopup(@RequestBody RequestTopupReq requestTopupReq) {
-        return BaseRespon.success("Hủy liên kết thành công",
-                userService.requestTopup(requestTopupReq));
+    public RequestTopupRes requestTopup(@RequestBody RequestTopupReq requestTopupReq) {
+        return userService.requestTopup(requestTopupReq);
     }
 
     //xác thực giao dịch nạp ví của api trên
     @PostMapping("/verify-otp")
-    public BaseRespon verifyOtp(@RequestBody VerifyOtpReq verifyOtpReq) {
-        return BaseRespon.success("Xác thực giao dịch thành công",
-                userService.verifyOtp(verifyOtpReq));
+    public VerifyOtpRes verifyOtp(@RequestBody VerifyOtpReq verifyOtpReq) {
+        return userService.verifyOtp(verifyOtpReq);
     }
 
     //api giao dịch nạp ví và giao dịch rút ví-phân biệt qua mã xử lí prrstDscd
     @PostMapping("/topup")
-    public BaseRespon topUp(@RequestBody TopupReq topupReq) {
-        return BaseRespon.success("mmm",
-                userService.topUp(topupReq));
+    public TopupRes topUp(@RequestBody TopupReq topupReq) {
+        return userService.topUp(topupReq);
     }
 
     //api truy vấn trạng thái giao dịch nạp/rút
     @PostMapping("/check-status")
-    public BaseRespon checkStatus(@RequestBody CheckStatusReq checkStatusReq) {
-        return BaseRespon.success("Xxx",
-                userService.checkStatus(checkStatusReq));
+    public CheckStatusRes checkStatus(@RequestBody CheckStatusReq checkStatusReq) {
+        return userService.checkStatus(checkStatusReq);
     }
 
     //api check số dư tài khoản đối tác
     @PostMapping("/balance")
-    public BaseRespon balance(@RequestBody BalanceReq balanceReq) {
-        return BaseRespon.success("nnn",
-                userService.balance(balanceReq));
+    public BalanceRes balance(@RequestBody BalanceReq balanceReq) {
+        return userService.balance(balanceReq);
     }
 }

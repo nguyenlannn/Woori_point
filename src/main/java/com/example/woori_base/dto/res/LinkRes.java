@@ -16,6 +16,6 @@ public class LinkRes {
     private String tokenId;
     private String refNo;
     private String rspCd;
-    private String checkSum;
     private String errEtc;
+    private String checkSum;
 }
