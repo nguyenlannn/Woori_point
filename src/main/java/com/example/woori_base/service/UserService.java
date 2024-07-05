@@ -8,7 +8,7 @@ import java.security.NoSuchAlgorithmException;
 
 @Service
 public interface UserService {
-    LinkRes postLink(String apiUrl, LinkReq linkReq);
+    LinkRes postLink(LinkReq linkReq);
 
     VerifyLinkRes verifyLink(VerifyLinkReq verifyLinkReq);
 

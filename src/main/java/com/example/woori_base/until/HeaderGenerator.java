@@ -184,16 +184,6 @@ public class HeaderGenerator {
         System.out.println(stringBufferFull.toString());
 
         String base64String = "a77278f3de168c7baefcc2ba3bb45bccedaf988a4f2c424c55d7e1eb8db3d903";
-
-        // Kiểm tra và giải mã chuỗi base64
-        try {
-            byte[] decodedBytes = Base64.getDecoder().decode(base64String);
-            String decodedString = new String(decodedBytes);
-
-            System.out.println("Chuỗi đã giải mã: " + decodedString);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Chuỗi không phải là base64 hợp lệ.");
-        }
     }
 
     public static StringBuffer generateMessage(String body) {

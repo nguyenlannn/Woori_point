@@ -56,11 +56,11 @@ public class UserController {
     //liên kết tài khoản/thẻ của khách hàng
     @PostMapping("/link")
 ////    @RequestMapping(value = "/link", method = RequestMethod.POST) cách cũ
-    public LinkRes link(@RequestParam String apiUrl, @RequestBody @Valid LinkReq linkReq) {
+    public LinkRes link(@RequestBody @Valid LinkReq linkReq) {
 
         logger.info("Info level log example");
 
-        return userService.postLink(apiUrl, linkReq);
+        return userService.postLink(linkReq);
     }
 
     //xác thực liên kết

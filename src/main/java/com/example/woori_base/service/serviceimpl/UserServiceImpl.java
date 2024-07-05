@@ -2,6 +2,7 @@ package com.example.woori_base.service.serviceimpl;
 
 import com.example.woori_base.dto.req.*;
 import com.example.woori_base.dto.res.*;
+import com.example.woori_base.exception.BadRequestException;
 import com.example.woori_base.service.UserService;
 import com.example.woori_base.until.ApiCallUntil;
 import com.example.woori_base.until.ChecksumUntil;
@@ -12,12 +13,12 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.json.JSONObject;
 import org.json.XML;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.security.KeyPair;
 import java.security.PrivateKey;
 import java.security.PublicKey;
-import java.util.Base64;
 
 import static com.example.woori_base.WooriBaseApplication.generateRSAKeyPair;
 
@@ -29,8 +30,11 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private ApiCallUntil apiCallUntil;
 
+    @Value("${api1.url}")
+    private String apiLink;
+
     @Override
-    public LinkRes postLink(String apiUrl, LinkReq linkReq) {
+    public LinkRes postLink(LinkReq linkReq) {
 
         try {
             KeyPair keyPair = generateRSAKeyPair();
@@ -38,10 +42,11 @@ public class UserServiceImpl implements UserService {
             PublicKey publicKey = keyPair.getPublic();
 
             String reqChecksum = linkReq.getTmsDt() + linkReq.getTmsTm() + linkReq.getTrnSrno() + linkReq.getPrrstDscd() + linkReq.getActNo() + linkReq.getLinkType().toString() + linkReq.getTelNo() + linkReq.getCusNm() + linkReq.getCusIdNoCd() + linkReq.getCusIdNo();
-
-//            if (!ChecksumUntil.verifyChecksum(reqChecksum, linkReq.getCheckSum(), publicKey)) {
-//                throw new BadRequestException(8001, " Invalid signature", null);
-//            }
+            String encryptedChecksum=ChecksumUntil.encryptChecksum(reqChecksum, privateKey);
+            //check chữ kí
+            if(!ChecksumUntil.verifyChecksum(linkReq.getCheckSum(),encryptedChecksum, publicKey)) {
+                throw new BadRequestException(8001, " Invalid signature", null);
+            }
             String random = RandomStringUtils.random(8, "1234567890");//random một chuỗi có 8 kí tự số
 
             String msgDscd = "EW001";//mã mặc định
@@ -66,7 +71,7 @@ public class UserServiceImpl implements UserService {
                     + "</params></T271010VRequest></root>"));
 
 
-            String apiResponse = apiCallUntil.makePostRequest(apiUrl, mappingInput);
+            String apiResponse = apiCallUntil.makePostRequest(apiLink, mappingInput);
             //cắt chuỗi
             int start = apiResponse.indexOf("<params>");
             int end = apiResponse.indexOf("</params>");
@@ -79,6 +84,8 @@ public class UserServiceImpl implements UserService {
             linkRes.setTrnSrno(json.get("trnSrno").toString());
             linkRes.setRefNo(json.get("refNo").toString());
             linkRes.setRspCd(json.get("rspCd").toString());
+
+            // nếu cột tokenId không có gì trả về, thì để defaultValue
             linkRes.setTokenId(json.optString("tokenId",""));
             linkRes.setErrEtc(json.get("errEtc").toString());
 

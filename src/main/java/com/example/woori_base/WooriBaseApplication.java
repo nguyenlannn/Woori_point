@@ -72,11 +72,13 @@ public class WooriBaseApplication {
 			PublicKey publicKey = keyPair.getPublic();
 
 			// Dữ liệu ví dụ
-			String userSignature = "20240704154915202306251046234872907902168128444023556800007902168128444023556879089";
-			String requestData = "Process is completed";
+			String userSignature = "";
+			String requestData = "";
 
 			// Tạo checksum
 			String checksum = generateChecksum(userSignature, requestData);
+
+			String chuoiChecksum="a77278f3de168c7baefcc2ba3bb45bccedaf988a4f2c424c55d7e1eb8db3d903";
 //
 			// Mã hóa checksum
 			String encryptedChecksum = encryptChecksum(checksum, privateKey);
@@ -84,7 +86,7 @@ public class WooriBaseApplication {
 			System.out.println("Encrypted Checksum: " + encryptedChecksum);
 
 			// Giải mã và xác minh checksum
-			boolean isVerified = verifyChecksum(checksum, encryptedChecksum, publicKey);
+			boolean isVerified = verifyChecksum(chuoiChecksum, encryptedChecksum, publicKey);
 			System.out.println("Checksum verified: " + isVerified);
 
 		} catch (Exception e) {
