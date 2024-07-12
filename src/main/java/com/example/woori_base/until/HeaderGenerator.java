@@ -182,8 +182,6 @@ public class HeaderGenerator {
         String body = "<root dataType=\"IN\"><275020VRequest  seq=\"1\" device=\"TM\"><params><msgTrno>BRAND1</msgTrno><msgDscd>EW008</msgDscd><apCusNo>MGV01</apCusNo><tmsDt>20230803</tmsDt><tmsTm>053104</tmsTm><trnSrno>20230625104623487295</trnSrno><prrstDscd>401</prrstDscd><actNo>100300005068</actNo></params></275020VRequest></root>";
         StringBuffer stringBufferFull = generateMessage(body);
         System.out.println(stringBufferFull.toString());
-
-        String base64String = "a77278f3de168c7baefcc2ba3bb45bccedaf988a4f2c424c55d7e1eb8db3d903";
     }
 
     public static StringBuffer generateMessage(String body) {

@@ -11,12 +11,13 @@ public class ApiCallUntil {// dùng để call đến một api của một hệ
     private final OkHttpClient client = new OkHttpClient();
 
     // Get Request
-    public String makeGetRequest(String apiUrl) throws IOException {
-        Request request = new Request.Builder()
+    public String makeGetRequest(String apiUrl) throws IOException {//truyền lên url
+        Request request = new Request.Builder()//triển khai buider để bui url
                 .url(apiUrl)
                 .build();
 
-        try (Response response = client.newCall(request).execute()) {
+        try (Response response = client.newCall(request).execute()) {//call và gửi resquest lên là đường dẫn url
+
             if (response.isSuccessful()) {
                 return response.body().string();
             } else {

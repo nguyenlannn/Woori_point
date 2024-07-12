@@ -1,5 +1,6 @@
 package com.example.woori_base.dto.req;
 
+import com.example.woori_base.enums.CusIdNoCdEnum;
 import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class UnlinkReq {
+public class CreateChecksumReq {
     @Column(length = 8, nullable = false)
     private String tmsDt;
 
@@ -21,12 +22,21 @@ public class UnlinkReq {
     @Column(length = 3, nullable = false)
     private String prrstDscd;
 
-    @Column(length = 25, nullable = false)
-    private String tokenId;
-
-    @Column(length = 20, nullable = false)
-    private String telNo;
+    @Column(length = 16, nullable = false)
+    private String actNo;
 
     @Column(nullable = false)
-    private String checkSum;
+    private Integer linkType;
+
+    @Column(length = 20)
+    private String telNo;
+
+    @Column(length = 300, nullable = false)
+    private String cusNm;
+
+    @Column(length = 2, nullable = false)
+    private CusIdNoCdEnum cusIdNoCd;
+
+    @Column(length = 50, nullable = false)
+    private String cusIdNo;
 }

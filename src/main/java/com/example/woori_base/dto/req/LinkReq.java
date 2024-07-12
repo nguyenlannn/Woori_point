@@ -2,6 +2,10 @@ package com.example.woori_base.dto.req;
 
 import com.example.woori_base.enums.CusIdNoCdEnum;
 import jakarta.persistence.Column;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,36 +15,43 @@ import lombok.Setter;
 @AllArgsConstructor
 public class LinkReq {
 
-    @Column(length = 8, nullable = false)
+    @Size(max = 8)
+    @NotBlank
     private String tmsDt;
 
-    @Column(length = 6, nullable = false)
+    @Size(max = 6)
+    @NotBlank
     private String tmsTm;
 
-    @Column(length = 20)
+    @Size(max = 20)
+    @NotBlank
     private String trnSrno;
 
-    @Column(length = 3, nullable = false)
+    @Size(max = 3)
+    @NotBlank
     private String prrstDscd;
 
-    @Column(length = 16, nullable = false)
+    @Size(max = 16)
+    @NotBlank
     private String actNo;
 
-    @Column(nullable = false)
+    @NotNull
     private Integer linkType;
 
-    @Column(length = 20)
+    @Size(max = 20)
+    @Pattern(regexp = "\\d+")
     private String telNo;
 
-    @Column(length = 300, nullable = false)
+    @Size(max = 300)
     private String cusNm;
 
-    @Column(length = 2, nullable = false)
+    @NotNull
     private CusIdNoCdEnum cusIdNoCd;
 
-    @Column(length = 50, nullable = false)
+    @Size(max = 50)
+    @NotBlank
     private String cusIdNo;
 
-    @Column(nullable = false)
+    @NotBlank
     private String checkSum;
 }

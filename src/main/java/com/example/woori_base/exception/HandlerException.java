@@ -1,35 +1,78 @@
 package com.example.woori_base.exception;
 
-import com.example.woori_base.until.ErrorResponse;
-import org.apache.coyote.BadRequestException;
+import com.example.woori_base.base.BaseResponse;
+import com.example.woori_base.until.ChecksumUntil;
+import com.example.woori_base.until.DateUntil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.context.request.WebRequest;
 
 @ControllerAdvice
 public class HandlerException {
 
-    @ExceptionHandler(BadRequestException.class)
-    public ResponseEntity<ErrorResponse> handleBadRequestException(com.example.woori_base.exception.BadRequestException e) {
-        ErrorResponse errorResponse=new ErrorResponse(e.getErrorCode(), e.getMessage(), e.getData());
-        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<BaseResponse> handleValidation(MethodArgumentNotValidException e){
+        BaseResponse baseResponse=new BaseResponse();
+//todo cần data lấy về từ request-nhưng mà có chỗ nào kiểm tra cái validate này đâu mà lấy đc
+        return new ResponseEntity<>(baseResponse, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(UnauthorizedException.class)
-    public ResponseEntity<String> handleUnauthorizedException(Exception e) {
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
+    @ExceptionHandler(ValidationException.class)
+    public ResponseEntity<BaseResponse> handleBadRequestException(ValidationException e) {
+        BaseResponse baseResponse = new BaseResponse();
+        baseResponse.setTmsTm(DateUntil.convertTmsTm());
+        baseResponse.setTmsDt(DateUntil.convertTmsDt());
+        baseResponse.setTrnSrno((String) e.getData());
+        baseResponse.setErrEtc(e.getMessage());
+        baseResponse.setRspCd(String.valueOf(e.getErrorCode()));
+        if(!"8001".equals(e.getErrorCode())){
+            String InputChecksum = baseResponse.getTmsDt() + baseResponse.getTmsTm() + baseResponse.getRspCd()
+                    + baseResponse.getErrEtc() + baseResponse.getTrnSrno();
+            try {
+                baseResponse.setCheckSum(ChecksumUntil.encryptChecksum(InputChecksum, ChecksumUntil.readPKCS8PrivateKey("private-to-me.pem")));
+            } catch (Exception exception) {
+                throw new RuntimeException(exception);
+            }
+        }
+        return new ResponseEntity<>(baseResponse, HttpStatus.BAD_REQUEST);//400
     }
 
-    @ExceptionHandler(ForbiddenException.class)
-    public ResponseEntity<String> handleForbiddenException(Exception e) {
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.FORBIDDEN);
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<BaseResponse> handleBusinessExceptions(BusinessException e) {
+        BaseResponse baseResponse=new BaseResponse();
+        //todo trả về respon của mình-ko kết nối với core được-ko lấy đc respon
+        baseResponse.setTmsTm(DateUntil.convertTmsTm());
+        baseResponse.setTmsDt(DateUntil.convertTmsDt());
+        baseResponse.setTrnSrno((String) e.getData());
+        baseResponse.setErrEtc(e.getMessage());
+        baseResponse.setRspCd(String.valueOf(e.getErrorCode()));
+        String InputChecksum = baseResponse.getTmsDt() + baseResponse.getTmsTm() + baseResponse.getRspCd()
+                + baseResponse.getErrEtc() + baseResponse.getTrnSrno();
+        try {
+            baseResponse.setCheckSum(ChecksumUntil.encryptChecksum(InputChecksum, ChecksumUntil.readPKCS8PrivateKey("private-to-me.pem")));
+        } catch (Exception exception) {
+            throw new RuntimeException(exception);
+        }
+        return new ResponseEntity<>(baseResponse, HttpStatus.GATEWAY_TIMEOUT);//504
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponse> handleAllExceptions(Exception ex, WebRequest request) {
-        ErrorResponse errorResponse = new ErrorResponse(500, "Internal Server Error", ex.getMessage());
-        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    @ExceptionHandler(InternalException.class)
+    public ResponseEntity<BaseResponse> handleInternalExceptions(InternalException e) {
+        BaseResponse baseResponse=new BaseResponse();
+        baseResponse.setTmsTm(DateUntil.convertTmsTm());
+        baseResponse.setTmsDt(DateUntil.convertTmsDt());
+        baseResponse.setTrnSrno((String) e.getData());
+        baseResponse.setErrEtc(e.getMessage());
+        baseResponse.setRspCd(String.valueOf(e.getErrorCode()));
+        String InputChecksum = baseResponse.getTmsDt() + baseResponse.getTmsTm() + baseResponse.getRspCd()
+                + baseResponse.getErrEtc() + baseResponse.getTrnSrno();
+        try {
+            baseResponse.setCheckSum(ChecksumUntil.encryptChecksum(InputChecksum, ChecksumUntil.readPKCS8PrivateKey("private-to-me.pem")));
+        } catch (Exception exception) {
+            throw new RuntimeException(exception);
+        }
+        return new ResponseEntity<>(baseResponse, HttpStatus.GATEWAY_TIMEOUT);//500
     }
 }

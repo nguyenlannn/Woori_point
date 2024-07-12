@@ -4,15 +4,8 @@ import com.example.woori_base.dto.req.*;
 import com.example.woori_base.dto.res.*;
 import org.springframework.stereotype.Service;
 
-import java.security.NoSuchAlgorithmException;
-
 @Service
-public interface UserService {
-    LinkRes postLink(LinkReq linkReq);
-
-    VerifyLinkRes verifyLink(VerifyLinkReq verifyLinkReq);
-
-    UnlinkRes unlink(UnlinkReq unlinkReq);
+public interface TopUpService {
 
     RequestTopupRes requestTopup(RequestTopupReq requestTopupReq);
 
