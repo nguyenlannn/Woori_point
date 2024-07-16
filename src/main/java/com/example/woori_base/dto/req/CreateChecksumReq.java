@@ -2,6 +2,9 @@ package com.example.woori_base.dto.req;
 
 import com.example.woori_base.enums.CusIdNoCdEnum;
 import jakarta.persistence.Column;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,33 +13,42 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class CreateChecksumReq {
-    @Column(length = 8, nullable = false)
+
+    @Size(max = 8,message = "0031;The required field is omitted. Check the detailed content")
+    @NotBlank
     private String tmsDt;
 
-    @Column(length = 6, nullable = false)
+    @Size(max = 6,message = "0031;The required field is omitted. Check the detailed content")
+    @NotBlank
     private String tmsTm;
 
-    @Column(length = 20)
+    @Size(max = 20,message = "0031;The required field is omitted. Check the detailed content")
+    @NotBlank
     private String trnSrno;
 
-    @Column(length = 3, nullable = false)
+    @Size(max = 3,message = "0031;The required field is omitted. Check the detailed content")
+    @NotBlank
     private String prrstDscd;
 
-    @Column(length = 16, nullable = false)
+    @Size(max = 16,message = "0031;The required field is omitted. Check the detailed content")
+    @NotBlank
     private String actNo;
 
-    @Column(nullable = false)
+    @NotNull(message = "0031;The required field is omitted. Check the detailed content")
     private Integer linkType;
 
-    @Column(length = 20)
+    @Size(max = 20,message = "0031;The required field is omitted. Check the detailed content")
+    @NotBlank
     private String telNo;
 
-    @Column(length = 300, nullable = false)
+    @Size(max = 300,message = "0031;The required field is omitted. Check the detailed content")
+    @NotBlank
     private String cusNm;
 
-    @Column(length = 2, nullable = false)
+    @NotNull(message = "0031;The required field is omitted. Check the detailed content")
     private CusIdNoCdEnum cusIdNoCd;
 
-    @Column(length = 50, nullable = false)
+    @Size(max = 50,message = "0031;The required field is omitted. Check the detailed content")
+    @NotBlank
     private String cusIdNo;
 }

@@ -1,27 +1,35 @@
 package com.example.woori_base.dto.req;
 
 import jakarta.persistence.Column;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 public class BalanceReq {
-    @Column(length = 8, nullable = false)
+
+    @Size(max = 8,message = "0031;The required field is omitted. Check the detailed content")
+    @NotBlank
     private String tmsDt;
 
-    @Column(length = 6, nullable = false)
+    @Size(max = 6,message = "0031;The required field is omitted. Check the detailed content")
+    @NotBlank
     private String tmsTm;
 
-    @Column(length = 20)
+    @Size(max = 20,message = "0031;The required field is omitted. Check the detailed content")
+    @NotBlank
     private String trnSrno;
 
-    @Column(length = 3, nullable = false)
+    @Size(max = 3,message = "0031;The required field is omitted. Check the detailed content")
+    @NotBlank
     private String prrstDscd;
 
-    @Column(length = 16, nullable = false)
+    @Size(max = 16,message = "0031;The required field is omitted. Check the detailed content")
+    @NotBlank
     private String actNo;
 
-    @Column(nullable = false)
+    @NotBlank
     private String checkSum;
 }

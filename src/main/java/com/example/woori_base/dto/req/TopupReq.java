@@ -1,36 +1,47 @@
 package com.example.woori_base.dto.req;
 
 import jakarta.persistence.Column;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 public class TopupReq {
-    @Column(length = 8, nullable = false)
+
+    @Size(max = 8,message = "0031;The required field is omitted. Check the detailed content")
+    @NotBlank
     private String tmsDt;
 
-    @Column(length = 6, nullable = false)
+    @Size(max = 6,message = "0031;The required field is omitted. Check the detailed content")
+    @NotBlank
     private String tmsTm;
 
-    @Column(length = 20)
+    @Size(max = 20,message = "0031;The required field is omitted. Check the detailed content")
+    @NotBlank
     private String trnSrno;
 
-    @Column(length = 3, nullable = false)
+    @Size(max = 3,message = "0031;The required field is omitted. Check the detailed content")
+    @NotBlank
     private String prrstDscd;
 
-    @Column(length = 25, nullable = false)
+    @Size(max = 25,message = "0031;The required field is omitted. Check the detailed content")
+    @NotBlank
     private String tokenId;
 
-    @Column(nullable = false)
+    @NotNull(message = "0031;The required field is omitted. Check the detailed content")
     private Integer trnAmt;
 
-    @Column(length = 3, nullable = false)
+    @Size(max = 3,message = "0031;The required field is omitted. Check the detailed content")
+    @NotBlank
     private String curCd;
 
-    @Column(nullable = false)
+    @NotBlank
     private String checksum;
 
-    @Column(length = 200, nullable = false)
+    @Size(max = 200,message = "0031;The required field is omitted. Check the detailed content")
+    @NotBlank
     private String etcCtt;
 }

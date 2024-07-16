@@ -11,8 +11,9 @@ import com.example.woori_base.service.PartnerService;
 import com.example.woori_base.until.ApiCallUntil;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.log4j.Log4j2;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,11 +26,12 @@ import java.io.IOException;
 @Validated
 @RestController// tầng controller xử lí các yêu cầu
 @RequiredArgsConstructor//annotation tiêm
+@Log4j2
 public class PartnerController {
 
     private final PartnerService partnerService;
 
-    private static final Logger logger = LogManager.getLogger(PartnerController.class);
+//    private static final Logger logger = LogManager.getLogger(PartnerController.class);
 
     @Autowired
     private ApiCallUntil apiCallUntil;
@@ -72,7 +74,8 @@ public class PartnerController {
     @PostMapping("/link")
 ////    @RequestMapping(value = "/link", method = RequestMethod.POST) cách cũ
     public LinkRes link(@Valid @RequestBody LinkReq linkReq) {
-        logger.info("Info level log example");
+        log.info("Input request");
+        log.info(linkReq.toString());
         return partnerService.postLink(linkReq);
     }
 

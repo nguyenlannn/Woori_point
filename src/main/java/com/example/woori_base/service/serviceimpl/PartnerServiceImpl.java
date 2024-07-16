@@ -58,6 +58,11 @@ public class PartnerServiceImpl implements PartnerService {
 
     @Override
     public LinkRes postLink(LinkReq linkReq) {
+        //validate
+//        if(StringUtils.isBlank(linkReq.getTmsTm())
+//        || StringUtils.isBlank(linkReq.getTmsDt()))
+//            throw new BusinessException("0002","The required field is omitted",linkReq.getTrnSrno());
+
         LinkRes linkRes = new LinkRes();
         // nối chuỗi resquest đầu vào
         String reqChecksum = linkReq.getTmsDt() + linkReq.getTmsTm() + linkReq.getTrnSrno() + linkReq.getPrrstDscd() + linkReq.getActNo() + linkReq.getLinkType().toString() + linkReq.getTelNo() + linkReq.getCusNm() + linkReq.getCusIdNoCd() + linkReq.getCusIdNo();
