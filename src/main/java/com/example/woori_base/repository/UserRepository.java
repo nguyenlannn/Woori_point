@@ -7,5 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends JpaRepository<PartnerEntity,String> {
 
-    PartnerEntity findByApCusNo(String apCusNo);
+    PartnerEntity findByEmail(String email);
+
+    Boolean existsByEmail(String email);
 }

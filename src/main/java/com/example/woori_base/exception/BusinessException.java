@@ -8,12 +8,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
 public class BusinessException extends RuntimeException{
-    private final String errorCode;
-    private final Object data;
+    private String errorCode;
+    private Object data;
 
     public  BusinessException(String errorCode, String message, Object data) {
         super(message);
         this.errorCode=errorCode;
         this.data=data;
+    }
+
+    public  BusinessException(String message) {
+        super(message);
     }
 }

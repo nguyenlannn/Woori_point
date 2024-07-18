@@ -144,16 +144,13 @@ public class PartnerServiceImpl implements PartnerService {
     @Override
     public VerifyLinkRes verifyLink(VerifyLinkReq verifyLinkReq) {
         VerifyLinkRes res = new VerifyLinkRes();
-        // nối chuỗi resquest đầu vào
         String reqChecksum = verifyLinkReq.getTmsDt() + verifyLinkReq.getTmsTm() + verifyLinkReq.getTrnSrno() + verifyLinkReq.getPrrstDscd() + verifyLinkReq.getRefNo() + verifyLinkReq.getOtpNo();
-        // tạo chuỗi checksum từ request đầu vào
         String encryptedChecksum = null;
         try {
             encryptedChecksum = ChecksumUntil.encryptChecksum(reqChecksum, ChecksumUntil.readPKCS8PrivateKey("private-to-partner.pem"));
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
-        //check chữ kí
         boolean verifyChecksum = false;
         try {
             verifyChecksum = ChecksumUntil.verifyChecksum(reqChecksum, encryptedChecksum, ChecksumUntil.readX509PublicKey("public-to-partner.pem"));
@@ -163,11 +160,9 @@ public class PartnerServiceImpl implements PartnerService {
         if (!verifyChecksum) {
             throw new ValidationException("8001", verifyLinkReq.getTrnSrno(), "invalid signature");
         }
-        //random một chuỗi có 8 kí tự số
         String random = RandomStringUtils.random(8, "1234567890");
-        String msgDscd = "EW001";//mã mặc định
-        String apCusNo = "123456";//mã đối tác
-        //mapping resquest đầu vào thành kiểu xml
+        String msgDscd = "EW001";
+        String apCusNo = "123456";
         String mappingInput = String.valueOf(HeaderGenerator.generateMessage("<root dataType=\"IN\"><T271010VRequest seq=\"1\" device=\"TM\">" +
                 "<params>"
                 + "<msgTrno>" + random + "</msgTrno>"
@@ -180,26 +175,21 @@ public class PartnerServiceImpl implements PartnerService {
                 + "<refNo>" + verifyLinkReq.getRefNo() + "</refNo>"
                 + "<otpNo>" + verifyLinkReq.getOtpNo() + "</otpNo>"
                 + "</params></T271010VRequest></root>"));
-
-        // chuyển chuỗi resquest đã mã hóa sang một hệ thống khác
         String apiResponse = null;
         try {
             apiResponse = apiCallUntil.makePostRequest(apiLink, mappingInput);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
-        //cắt chuỗi trả về
         int start = apiResponse.indexOf("<params>");
         int end = apiResponse.indexOf("</params>");
         String subApiResponse = apiResponse.substring(start + "<params>".length(), end);
 
-        // chuyển thành dạng json để trả về
         JSONObject json = XML.toJSONObject(subApiResponse); // converts xml to json
         res.setTmsDt(json.get("tmsDt").toString());
         res.setTmsTm(json.get("tmsTm").toString());
         res.setTrnSrno(json.get("trnSrno").toString());
         res.setRspCd(json.get("rspCd").toString());
-        // nếu cột tokenId không có gì trả về, thì để defaultValue
         res.setTokenId(json.optString("tokenId", ""));
         res.setErrEtc(json.get("errEtc").toString());
 
@@ -219,16 +209,14 @@ public class PartnerServiceImpl implements PartnerService {
     @Override
     public UnlinkRes unlink(UnlinkReq unlinkReq) {
         UnlinkRes unlinkRes = new UnlinkRes();
-        // nối chuỗi resquest đầu vào
         String reqChecksum = unlinkReq.getTmsDt() + unlinkReq.getTmsTm() + unlinkReq.getTrnSrno() + unlinkReq.getPrrstDscd() + unlinkReq.getTokenId() + unlinkReq.getTelNo();
-        // tạo chuỗi checksum từ request đầu vào
+
         String encryptedChecksum = null;
         try {
             encryptedChecksum = ChecksumUntil.encryptChecksum(reqChecksum, ChecksumUntil.readPKCS8PrivateKey("private-to-partner.pem"));
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
-        //check chữ kí
         boolean verifyChecksum = false;
         try {
             verifyChecksum = ChecksumUntil.verifyChecksum(reqChecksum, encryptedChecksum, ChecksumUntil.readX509PublicKey("public-to-partner.pem"));
@@ -238,11 +226,9 @@ public class PartnerServiceImpl implements PartnerService {
         if (!verifyChecksum) {
             throw new ValidationException("8001", unlinkReq.getTrnSrno(), "invalid signature");
         }
-        //random một chuỗi có 8 kí tự số
         String random = RandomStringUtils.random(8, "1234567890");
-        String msgDscd = "EW001";//mã mặc định
-        String apCusNo = "123456";//mã đối tác
-        //mapping resquest đầu vào thành kiểu xml
+        String msgDscd = "EW001";
+        String apCusNo = "123456";
         String mappingInput = String.valueOf(HeaderGenerator.generateMessage("<root dataType=\"IN\"><T271010VRequest seq=\"1\" device=\"TM\">" +
                 "<params>"
                 + "<msgTrno>" + random + "</msgTrno>"
@@ -255,21 +241,17 @@ public class PartnerServiceImpl implements PartnerService {
                 + "<tokenId>" + unlinkReq.getTokenId() + "</tokenId>"
                 + "<telNo>" + unlinkReq.getTelNo() + "</telNo>"
                 + "</params></T271010VRequest></root>"));
-
-        // chuyển chuỗi resquest đã mã hóa sang một hệ thống khác
         String apiResponse = null;
         try {
             apiResponse = apiCallUntil.makePostRequest(apiLink, mappingInput);
         } catch (IOException ex) {
-            throw new BusinessException("8000",null,"APIC System Error");
+            throw new BusinessException("8000", null, "APIC System Error");
         }
-        //cắt chuỗi trả về
         int start = apiResponse.indexOf("<params>");
         int end = apiResponse.indexOf("</params>");
         String subApiResponse = apiResponse.substring(start + "<params>".length(), end);
 
-        // chuyển thành dạng json để trả về
-        JSONObject json = XML.toJSONObject(subApiResponse); // converts xml to json
+        JSONObject json = XML.toJSONObject(subApiResponse);
         unlinkRes.setTmsDt(json.get("tmsDt").toString());
         unlinkRes.setTmsTm(json.get("tmsTm").toString());
         unlinkRes.setTrnSrno(json.get("trnSrno").toString());
@@ -277,8 +259,6 @@ public class PartnerServiceImpl implements PartnerService {
         unlinkRes.setErrEtc(json.get("errEtc").toString());
 
         String ress = unlinkRes.getTmsDt() + unlinkRes.getTmsTm() + unlinkRes.getTrnSrno() + unlinkRes.getRspCd() + unlinkRes.getErrEtc();
-
-        //gen ra checksum
         String genCheckSum = null;
         try {
             genCheckSum = ChecksumUntil.encryptChecksum(ress, ChecksumUntil.readPKCS8PrivateKey("private-to-me.pem"));
