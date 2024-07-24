@@ -1,5 +1,6 @@
 package com.example.woori_base.dto.res;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,9 +14,10 @@ public class LinkRes {
     private String tmsDt;
     private String tmsTm;
     private String trnSrno;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String tokenId;
     private String refNo;
     private String rspCd;
-    private String errEtc;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String checkSum;
 }

@@ -1,5 +1,7 @@
 package com.example.woori_base.until;
 
+import com.example.woori_base.exception.BusinessException;
+import com.example.woori_base.exception.InternalException;
 import okhttp3.*;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +12,7 @@ public class ApiCallUntil {// dùng để call đến một api của một hệ
 
     private final OkHttpClient client = new OkHttpClient();
 
-    // Get Request
+    // phương thức get
     public String makeGetRequest(String apiUrl) throws IOException {//truyền lên url
         Request request = new Request.Builder()//triển khai buider để bui url
                 .url(apiUrl)
@@ -26,8 +28,8 @@ public class ApiCallUntil {// dùng để call đến một api của một hệ
         }
     }
 
-    //post request
-    public String makePostRequest(String apiUrl, String requestBody) throws IOException {
+    //call api gateway với phương thức post
+    public String makePostRequest(String apiUrl, String requestBody) {
         MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
         RequestBody body = RequestBody.create(requestBody, mediaType);
 
@@ -37,11 +39,9 @@ public class ApiCallUntil {// dùng để call đến một api của một hệ
                 .build();
 
         try (Response response = client.newCall(request).execute()) {
-            if (response.isSuccessful()) {
-                return response.body().string();
-            } else {
-                throw new IOException("Unexpected response: " + response.code());
-            }
+            return response.body().string();
+        }catch (InternalException | IOException e){
+            throw new InternalException("8012",null,"CoreBanking Timeout");
         }
     }
 }

@@ -8,6 +8,7 @@ import com.example.woori_base.dto.res.LoginRes;
 import com.example.woori_base.dto.res.UserRes;
 import com.example.woori_base.entity.PartnerEntity;
 import com.example.woori_base.entity.TokenEntity;
+import com.example.woori_base.enums.ScopeEnum;
 import com.example.woori_base.enums.TokenType;
 import com.example.woori_base.exception.BusinessException;
 import com.example.woori_base.repository.TokenRepository;
@@ -58,7 +59,7 @@ public class UserServiceImpl implements UserService {
         partner.setEmail(userReq.getEmail());
         partner.setPassword(mpasswordEncoder.encode(partner.getPassword()));
         partner.setCusNm(userReq.getName());
-        partner.setTelNo(userReq.getTelNo());
+        partner.setScope(ScopeEnum.EWALLET);
 
         userRepository.save(partner);
         UserRes userRes = new UserRes();
@@ -84,7 +85,16 @@ public class UserServiceImpl implements UserService {
         Map<String, Object> extraClaims = new HashMap<>();
 
         UserDetails userDetails = userDetailServiceConfig.loadUserByUsername(loginReq.getEmail());
-        String accessToken = tokenConfig.generateToken(extraClaims ,userDetails);
+
+        System.out.println("--------------------------------------------------------------------");
+        System.out.println(userDetails.toString());
+
+        //todo lấy scope ra từ userDetail-- xong vất vào token trả về
+        PartnerEntity partner=userRepository.findByEmail(userDetails.getUsername());
+        String resScope= String.valueOf(partner.getScope());
+
+        extraClaims.put("scope",resScope);
+        String accessToken = tokenConfig.generateToken(extraClaims,userDetails);
         String refreshToken=tokenConfig.generateRefreshToken(userDetails);
 
         TokenEntity tokenEntity=new TokenEntity();
@@ -96,7 +106,7 @@ public class UserServiceImpl implements UserService {
         tokenRepository.save(tokenEntity);
 
         loginRes.setToken_type("Bearer");
-        loginRes.setScope("e-wallet");
+        loginRes.setScope(String.valueOf(partner.getScope()));
         loginRes.setAccessToken(accessToken);
         loginRes.setExpiresIn(Math.toIntExact(JWT_TIME_ACCESS_TOKEN));
         return loginRes;

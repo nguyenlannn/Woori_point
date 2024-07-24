@@ -39,7 +39,7 @@ public class TopupReq {
     private String curCd;
 
     @NotBlank
-    private String checksum;
+    private String checkSum;
 
     @Size(max = 200,message = "0031;The required field is omitted. Check the detailed content")
     @NotBlank

@@ -16,8 +16,5 @@ public class VerifyLinkRes //extends BaseResponse
     private String trnSrno;
     private String tokenId;
     private String rspCd;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String errEtc;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String checkSum;
 }

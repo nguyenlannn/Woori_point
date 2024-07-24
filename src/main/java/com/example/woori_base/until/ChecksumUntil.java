@@ -32,16 +32,12 @@ public class ChecksumUntil {
 
         //lấy một đối tượng signature để mã hóa bằng thuật toán sha256withrsa
         Signature privateSignature = Signature.getInstance("SHA256withRSA");
-
         //khởi tạo đối tượng privateSignature dùng privateKey để mã hóa
         privateSignature.initSign(privateKey);
-
         //cập nhật vào đối tượng privateSignature chuỗi checksum, và chuyển nó thành dạng byte
         privateSignature.update(checksum.getBytes(StandardCharsets.UTF_8));
-
         //kí dữ liệu
         byte[] signature = privateSignature.sign();
-
         //trả về dữ liệu đã mã hóa dạng base64
         return Base64.getEncoder().encodeToString(signature);
     }
@@ -51,7 +47,6 @@ public class ChecksumUntil {
         Signature publicSignature = Signature.getInstance("SHA256withRSA");
         publicSignature.initVerify(publicKey);
         publicSignature.update(checksum.getBytes(StandardCharsets.UTF_8));
-
         byte[] signatureBytes = Base64.getDecoder().decode(encryptedChecksum);
         return publicSignature.verify(signatureBytes);
     }
@@ -63,7 +58,8 @@ public class ChecksumUntil {
         fos.write(Base64.getEncoder().encode(publicKeyBytes));
         fos.close();
     }
-//lưu khóa private vào file
+
+    //lưu khóa private vào file
     private static void savePrivateKey(PrivateKey privateKey, String fileName) throws IOException {
         byte[] privateKeyBytes = privateKey.getEncoded();
         FileOutputStream fos = new FileOutputStream(fileName);

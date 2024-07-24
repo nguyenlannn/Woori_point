@@ -31,10 +31,4 @@ public class BasicController {
     public LoginRes login(@RequestBody @Valid LoginReq loginReq) {
         return userService.login(loginReq);
     }
-
-    //refresh-token
-//    @PostMapping("/refreshToken")
-//    public LoginRes refreshToken(HttpServlet request) {
-//        return userService.refreshToken(request);
-//    }
 }

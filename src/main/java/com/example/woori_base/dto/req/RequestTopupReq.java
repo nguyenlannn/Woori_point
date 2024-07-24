@@ -3,11 +3,15 @@ package com.example.woori_base.dto.req;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class RequestTopupReq {
 
     @Size(max = 8,message = "0031;The required field is omitted. Check the detailed content")
@@ -35,10 +39,10 @@ public class RequestTopupReq {
     @NotBlank
     private String curCd;
 
-    @NotBlank
-    private String checksum;
-
     @Size(max = 200,message = "0031;The required field is omitted. Check the detailed content")
     @NotBlank
     private String etcCtt;
+
+    @NotBlank
+    private String checkSum;
 }

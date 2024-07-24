@@ -1,5 +1,6 @@
 package com.example.woori_base.dto.res;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,5 @@ public class UnlinkRes {
     private String tmsTm;
     private String trnSrno;
     private String rspCd;
-    private String errEtc;
     private String checkSum;
 }

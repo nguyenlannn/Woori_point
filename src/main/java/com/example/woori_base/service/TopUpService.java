@@ -9,7 +9,7 @@ public interface TopUpService {
 
     RequestTopupRes requestTopup(RequestTopupReq requestTopupReq);
 
-    VerifyOtpRes verifyOtp(VerifyOtpReq verifyOtpReq);
+    TopUpConfirmRes verifyOtp(TopUpConfirmReq verifyOtpReq);
 
     TopupRes topUp(TopupReq topupReq);
 

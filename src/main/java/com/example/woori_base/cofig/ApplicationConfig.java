@@ -21,7 +21,7 @@ public class ApplicationConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
+    @Bean// bean dùng cho xác định người dùng hiện tại,sau đó Spring Data JPA hỗ trợ tự động điền thông tin về người tạo và người cập nhật các thực thể bằng cách sử dụng @CreatedBy, @LastModifiedBy, @CreatedDate, và @LastModifiedDate.
     public ApplicationAuditAware auditorAware() {
         return new ApplicationAuditAware();
     }
@@ -32,7 +32,7 @@ public class ApplicationConfig {
         return config.getAuthenticationManager();
     }
 
-    @Bean// bean phải có cho  mã hóa mật khẩu
+    @Bean// bean phải có cho mã hóa mật khẩu
     public DaoAuthenticationProvider authProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailServiceConfig);

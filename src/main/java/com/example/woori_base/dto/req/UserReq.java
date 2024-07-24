@@ -14,14 +14,12 @@ public class UserReq {
     private  String name;
     private  String email;
     private  String password;
-    private String telNo;
 
     public PartnerEntity toPartnerEntity() {
         return PartnerEntity.builder()
                 .cusNm(name)
                 .email(email)
                 .password(password)
-                .telNo(telNo)
                 .build();
     }
 }

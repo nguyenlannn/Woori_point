@@ -1,6 +1,5 @@
 package com.example.woori_base.dto.req;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -9,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class VerifyOtpReq {
+public class TopUpConfirmReq {
 
     @Size(max = 8,message = "0031;The required field is omitted. Check the detailed content")
     @NotBlank
@@ -47,7 +46,7 @@ public class VerifyOtpReq {
     private String curCd;
 
     @NotBlank
-    private String checksum;
+    private String checkSum;
 
     @Size(max = 200,message = "0031;The required field is omitted. Check the detailed content")
     @NotBlank

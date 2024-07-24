@@ -35,5 +35,5 @@ public class CheckStatusReq {
     private String orgTmsDt;
 
     @NotBlank
-    private String checksum;
+    private String checkSum;
 }

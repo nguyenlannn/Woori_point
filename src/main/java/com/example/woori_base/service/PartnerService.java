@@ -1,6 +1,6 @@
 package com.example.woori_base.service;
 
-import com.example.woori_base.dto.req.CreateChecksumReq;
+import com.example.woori_base.base.BaseRequest;
 import com.example.woori_base.dto.req.LinkReq;
 import com.example.woori_base.dto.req.UnlinkReq;
 import com.example.woori_base.dto.req.VerifyLinkReq;
@@ -12,7 +12,8 @@ import org.springframework.stereotype.Service;
 @Service
 public interface PartnerService {
 
-    String createChecksum(CreateChecksumReq createChecksumReq);
+    String createChecksum(BaseRequest baseRequest);
+
     LinkRes postLink(LinkReq linkReq);
 
     VerifyLinkRes verifyLink(VerifyLinkReq verifyLinkReq);

@@ -48,18 +48,18 @@ public class FilterConfig extends OncePerRequestFilter {
             var isTokenValid = tokenRepository.findByAccessToken(jwt)
                     .map(t -> !t.isExpired() && !t.isRevoked())//để kiểm tra xem token có hết hạn hoặc bị thu hồi hay không
                     .orElse(false);
-            if (tokenConfig.isTokenValid(jwt, userDetails) && isTokenValid) {
+            if (tokenConfig.isTokenValid(jwt, userDetails) && isTokenValid) {//kiểm tra tính hợp lệ của token
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                         userDetails,
                         null,
-                        userDetails.getAuthorities()
+                        userDetails.getAuthorities()// lấy danh sách quyền của user
                 );
-                authToken.setDetails(
+                authToken.setDetails( // Thiết lập thông tin chi tiết (details) cho authToken
                         new WebAuthenticationDetailsSource().buildDetails(request)
                 );
-                SecurityContextHolder.getContext().setAuthentication(authToken);
+                SecurityContextHolder.getContext().setAuthentication(authToken);//cho đối tượng xác thực vào context
             }
         }
-        filterChain.doFilter(request, response);
+        filterChain.doFilter(request, response);//tiếp tục lọc
     }
 }

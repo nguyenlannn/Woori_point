@@ -19,7 +19,7 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 @EnableMethodSecurity
 public class SecurityConfiguration {
 
-    private static final String[] WHITE_LIST_URL = {"/basic/**",
+    private static final String[] WHITE_LIST_URL = {"/**",//tạo một list danh sách các url đc đi qua
             "/v2/api-docs",
             "/v3/api-docs",
             "/v3/api-docs/**",
@@ -36,16 +36,16 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(AbstractHttpConfigurer::disable)
+                .csrf(AbstractHttpConfigurer::disable)// vô hiệu hóa bảo vệ csrf
                 .authorizeHttpRequests(req ->
                         req.requestMatchers(WHITE_LIST_URL)
-                                .permitAll()
-                                .anyRequest()
+                                .permitAll()// cho phép tất cả các url nằm trong danh sách (white list url) được đi qua
+                                .anyRequest()// còn lại các url ko nằng trong ds, thì yêu cầu xác thực
                                 .authenticated()
                 )
-                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
+                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))//chính sách quản lí phiên làm việc
                 .authenticationProvider(authenticationProvider)
-                .addFilterBefore(filterConfig, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(filterConfig, UsernamePasswordAuthenticationFilter.class)// cho đi qua bộ lọc mình custom.
         ;
         return http.build();
     }

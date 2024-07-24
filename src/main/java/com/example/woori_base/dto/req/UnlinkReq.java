@@ -38,4 +38,8 @@ public class UnlinkReq {
 
     @NotBlank
     private String checkSum;
+
+    public String toString(){
+        return tmsDt+tmsTm+trnSrno+prrstDscd+tokenId+telNo;
+    }
 }
