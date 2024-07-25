@@ -12468,3 +12468,196 @@ org.json.JSONException: JSONObject["errEtc"] not found.
 2024-07-24 15:23:09.993 [http-nio-8081-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/xml;charset=UTF-8, text/xml;charset=UTF-8, application/*+xml;charset=UTF-8]
 2024-07-24 15:23:09.993 [http-nio-8081-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Writing [com.example.woori_base.dto.res.BalanceRes@1da5a292]
 2024-07-24 15:23:09.995 [http-nio-8081-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2024-07-25 16:23:04.453 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-07-25 16:23:04.671 [main] INFO  com.example.woori_base.WooriBaseApplication - Starting WooriBaseApplication using Java 22.0.2 with PID 4880 (C:\Users\ABC\Desktop\base_intern_woori\target\classes started by ABC in C:\Users\ABC\Desktop\base_intern_woori)
+2024-07-25 16:23:04.682 [main] DEBUG com.example.woori_base.WooriBaseApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-07-25 16:23:04.685 [main] INFO  com.example.woori_base.WooriBaseApplication - No active profile set, falling back to 1 default profile: "default"
+2024-07-25 16:23:06.970 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-25 16:23:07.075 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 96 ms. Found 2 JPA repository interfaces.
+2024-07-25 16:23:08.111 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2024-07-25 16:23:08.129 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2024-07-25 16:23:08.133 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-07-25 16:23:08.134 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-07-25 16:23:08.226 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-07-25 16:23:08.229 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3411 ms
+2024-07-25 16:23:08.503 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-25 16:23:08.605 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-25 16:23:08.677 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-07-25 16:23:09.152 [main] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-25 16:23:09.204 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-07-25 16:23:09.699 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@48f4f03e
+2024-07-25 16:23:09.702 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-07-25 16:23:11.391 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-25 16:23:11.476 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-25 16:23:11.999 [main] DEBUG com.example.woori_base.cofig.FilterConfig - Filter 'filterConfig' configured for use
+2024-07-25 16:23:12.101 [main] INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authProvider
+2024-07-25 16:23:12.102 [main] WARN  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-07-25 16:23:12.456 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-25 16:23:12.829 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 14 mappings in 'requestMappingHandlerMapping'
+2024-07-25 16:23:13.188 [main] DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-07-25 16:23:13.292 [main] INFO  org.springframework.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@bedebe9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6592a73b, org.springframework.security.web.context.SecurityContextHolderFilter@6dc98c02, org.springframework.security.web.header.HeaderWriterFilter@577b2c5f, org.springframework.web.filter.CorsFilter@14f11a56, org.springframework.security.web.authentication.logout.LogoutFilter@1f13eabb, com.example.woori_base.cofig.FilterConfig@15096b0e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@448c4742, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@b7b26c6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@11ce61d1, org.springframework.security.web.session.SessionManagementFilter@7473cfe2, org.springframework.security.web.access.ExceptionTranslationFilter@79e591bb, org.springframework.security.web.access.intercept.AuthorizationFilter@5cb654e3]
+2024-07-25 16:23:13.487 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-07-25 16:23:13.530 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-07-25 16:23:13.669 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2024-07-25 16:23:13.679 [main] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-07-25 16:23:13.682 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-25 16:23:13.686 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-07-25 16:23:13.727 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-07-25 16:23:13.767 [main] INFO  org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-07-25 16:23:13.798 [main] ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+2024-07-25 16:23:32.545 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-07-25 16:23:32.744 [main] INFO  com.example.woori_base.WooriBaseApplication - Starting WooriBaseApplication using Java 22.0.2 with PID 2772 (C:\Users\ABC\Desktop\base_intern_woori\target\classes started by ABC in C:\Users\ABC\Desktop\base_intern_woori)
+2024-07-25 16:23:32.752 [main] DEBUG com.example.woori_base.WooriBaseApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-07-25 16:23:32.754 [main] INFO  com.example.woori_base.WooriBaseApplication - No active profile set, falling back to 1 default profile: "default"
+2024-07-25 16:23:34.207 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-25 16:23:34.332 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 110 ms. Found 2 JPA repository interfaces.
+2024-07-25 16:23:35.461 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2024-07-25 16:23:35.482 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2024-07-25 16:23:35.487 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-07-25 16:23:35.487 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-07-25 16:23:35.576 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-07-25 16:23:35.579 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2737 ms
+2024-07-25 16:23:36.001 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-25 16:23:36.076 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-25 16:23:36.145 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-07-25 16:23:36.627 [main] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-25 16:23:36.674 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-07-25 16:23:37.205 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@470c4229
+2024-07-25 16:23:37.207 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-07-25 16:23:38.719 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-25 16:23:38.794 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-25 16:23:39.323 [main] DEBUG com.example.woori_base.cofig.FilterConfig - Filter 'filterConfig' configured for use
+2024-07-25 16:23:39.423 [main] INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authProvider
+2024-07-25 16:23:39.424 [main] WARN  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-07-25 16:23:39.777 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-25 16:23:40.047 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 14 mappings in 'requestMappingHandlerMapping'
+2024-07-25 16:23:40.239 [main] DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-07-25 16:23:40.325 [main] INFO  org.springframework.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6bea0866, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3c5d183, org.springframework.security.web.context.SecurityContextHolderFilter@3204146d, org.springframework.security.web.header.HeaderWriterFilter@4a5a8c6f, org.springframework.web.filter.CorsFilter@471b7c9c, org.springframework.security.web.authentication.logout.LogoutFilter@197c3101, com.example.woori_base.cofig.FilterConfig@531bfe4b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7320bccc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@136a5572, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@39cf7f3c, org.springframework.security.web.session.SessionManagementFilter@7a7f5c44, org.springframework.security.web.access.ExceptionTranslationFilter@118cbb26, org.springframework.security.web.access.intercept.AuthorizationFilter@329b4b8b]
+2024-07-25 16:23:40.488 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-07-25 16:23:40.561 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-07-25 16:23:40.706 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2024-07-25 16:23:40.727 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8083 (http) with context path '/'
+2024-07-25 16:23:40.742 [main] INFO  com.example.woori_base.WooriBaseApplication - Started WooriBaseApplication in 8.703 seconds (process running for 10.254)
+2024-07-25 17:02:37.902 [SpringApplicationShutdownHook] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-25 17:02:37.907 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-07-25 17:02:37.934 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-07-25 17:11:24.810 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-07-25 17:11:25.006 [main] INFO  com.example.woori_base.WooriBaseApplication - Starting WooriBaseApplication using Java 22.0.2 with PID 1424 (C:\Users\ABC\Desktop\base_intern_woori\target\classes started by ABC in C:\Users\ABC\Desktop\base_intern_woori)
+2024-07-25 17:11:25.013 [main] DEBUG com.example.woori_base.WooriBaseApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-07-25 17:11:25.015 [main] INFO  com.example.woori_base.WooriBaseApplication - No active profile set, falling back to 1 default profile: "default"
+2024-07-25 17:11:27.109 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-25 17:11:27.227 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 104 ms. Found 2 JPA repository interfaces.
+2024-07-25 17:11:28.332 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2024-07-25 17:11:28.354 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2024-07-25 17:11:28.358 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-07-25 17:11:28.359 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-07-25 17:11:28.450 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-07-25 17:11:28.452 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3361 ms
+2024-07-25 17:11:28.744 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-25 17:11:28.848 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-25 17:11:28.902 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-07-25 17:11:29.401 [main] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-25 17:11:29.449 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-07-25 17:11:29.986 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1214c98b
+2024-07-25 17:11:29.988 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-07-25 17:11:31.536 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-25 17:11:31.616 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-25 17:11:32.095 [main] DEBUG com.example.woori_base.cofig.FilterConfig - Filter 'filterConfig' configured for use
+2024-07-25 17:11:32.199 [main] INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authProvider
+2024-07-25 17:11:32.200 [main] WARN  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-07-25 17:11:32.593 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-25 17:11:32.816 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 11 mappings in 'requestMappingHandlerMapping'
+2024-07-25 17:11:33.070 [main] DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-07-25 17:11:33.154 [main] INFO  org.springframework.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@51f412e6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7234db3, org.springframework.security.web.context.SecurityContextHolderFilter@4d0b8b8b, org.springframework.security.web.header.HeaderWriterFilter@7ab17cf, org.springframework.web.filter.CorsFilter@189c6683, org.springframework.security.web.authentication.logout.LogoutFilter@36003e90, com.example.woori_base.cofig.FilterConfig@2fb555e8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@69bdcfbc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6adc90e9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2972b493, org.springframework.security.web.session.SessionManagementFilter@6c09d716, org.springframework.security.web.access.ExceptionTranslationFilter@4a304820, org.springframework.security.web.access.intercept.AuthorizationFilter@77e42cbf]
+2024-07-25 17:11:33.331 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-07-25 17:11:33.385 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-07-25 17:11:33.580 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2024-07-25 17:11:33.609 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8083 (http) with context path '/'
+2024-07-25 17:11:33.627 [main] INFO  com.example.woori_base.WooriBaseApplication - Started WooriBaseApplication in 9.435 seconds (process running for 11.154)
+2024-07-25 17:11:46.750 [http-nio-8083-exec-2] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-25 17:11:46.750 [http-nio-8083-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-07-25 17:11:46.751 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2024-07-25 17:11:46.751 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2024-07-25 17:11:46.752 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2024-07-25 17:11:46.753 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@3b4cce5a
+2024-07-25 17:11:46.754 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@77eb76f
+2024-07-25 17:11:46.755 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-07-25 17:11:46.755 [http-nio-8083-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2024-07-25 17:11:46.796 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - POST "/check-user", parameters={}
+2024-07-25 17:11:46.799 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.woori_base.controller.MembershipPointController#checkUser(CheckUserReq)
+2024-07-25 17:11:46.924 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [com.example.woori_base.dto.req.CheckUserReq@67dc5398]
+2024-07-25 17:11:47.003 [http-nio-8083-exec-2] INFO  com.example.woori_base.service.serviceimpl.MembershipPointServiceImpl - request core--------------------------
+2024-07-25 17:11:47.003 [http-nio-8083-exec-2] INFO  com.example.woori_base.service.serviceimpl.MembershipPointServiceImpl - 0000076800000446WGSS20240725171146997DMCEAPI01010035000APIMCE01D                                                                                                                                             20240725171147002                 0087275001VQ100 NN00W5970001  SMCIG022                          00                                                                                                                            00                              0<root dataType="IN"><T275001VRequest seq="1" device="TM"><params><msgTrno>25757744</msgTrno><msgDscd>AP001</msgDscd><apCusNo>VNI001</msgTrno><tmsDt>20240725</tmsDt><tmsTm>051146</tmsTm><mbrId>BRAND1</mbrId><trnType>PHONE</trnType><telNo>0934523721</telNo><birTh>1991-02-24</birTh></params></T275001VRequest></root>
+2024-07-25 17:11:47.117 [http-nio-8083-exec-2] INFO  com.example.woori_base.service.serviceimpl.MembershipPointServiceImpl - respon core--------------------------
+2024-07-25 17:11:47.117 [http-nio-8083-exec-2] INFO  com.example.woori_base.service.serviceimpl.MembershipPointServiceImpl - 0000089100000446WGSS20240725171147089DMCEAPI01010061000APIMCE01D                                                                                                                                             20240725171147090                 0087275001VP100 NN00W5970001  SMCIG022                          00                                                                                                                            00                              0<root dataType="OUT"><T275001VResponse  seq="1" device="TM" scrNo="121101M" emitYn="N"><params><msgTrno>25757744</msgTrno><msgDscd>AP001</msgDscd><apCusNo>null</apCusNo><tmsDt>20240725</tmsDt><tmsTm>051146</tmsTm><cusId>66740962-3558-4f47-810d-db9b03ae2e1a</cusId><cusNm>NGuyen Van A</cusNm><genCd>M</genCd><mbrCardNo>6282982134607181</mbrCardNo><rspCd>0000</rspCd><errMsg>Process is completed</errMsg></params></T275001VResponse></root>
+2024-07-25 17:11:47.172 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/xml;charset=UTF-8, text/xml;charset=UTF-8, application/*+xml;charset=UTF-8]
+2024-07-25 17:11:47.174 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Writing [com.example.woori_base.dto.res.CheckUserRes@368749a9]
+2024-07-25 17:11:47.199 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2024-07-25 17:28:54.911 [SpringApplicationShutdownHook] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-25 17:28:54.914 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-07-25 17:28:54.935 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-07-25 17:29:01.023 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-07-25 17:29:01.233 [main] INFO  com.example.woori_base.WooriBaseApplication - Starting WooriBaseApplication using Java 22.0.2 with PID 4224 (C:\Users\ABC\Desktop\base_intern_woori\target\classes started by ABC in C:\Users\ABC\Desktop\base_intern_woori)
+2024-07-25 17:29:01.239 [main] DEBUG com.example.woori_base.WooriBaseApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-07-25 17:29:01.241 [main] INFO  com.example.woori_base.WooriBaseApplication - No active profile set, falling back to 1 default profile: "default"
+2024-07-25 17:29:02.679 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-25 17:29:02.803 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 111 ms. Found 2 JPA repository interfaces.
+2024-07-25 17:29:03.959 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2024-07-25 17:29:03.977 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2024-07-25 17:29:03.981 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-07-25 17:29:03.982 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-07-25 17:29:04.072 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-07-25 17:29:04.075 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2766 ms
+2024-07-25 17:29:04.348 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-25 17:29:04.439 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-25 17:29:04.496 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-07-25 17:29:04.989 [main] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-25 17:29:05.029 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-07-25 17:29:05.527 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6774f264
+2024-07-25 17:29:05.529 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-07-25 17:29:07.090 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-25 17:29:07.171 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-25 17:29:07.730 [main] DEBUG com.example.woori_base.cofig.FilterConfig - Filter 'filterConfig' configured for use
+2024-07-25 17:29:07.861 [main] INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authProvider
+2024-07-25 17:29:07.863 [main] WARN  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-07-25 17:29:08.253 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-25 17:29:08.516 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 11 mappings in 'requestMappingHandlerMapping'
+2024-07-25 17:29:08.764 [main] DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-07-25 17:29:08.827 [main] INFO  org.springframework.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@68312b85, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5ab0168, org.springframework.security.web.context.SecurityContextHolderFilter@26247027, org.springframework.security.web.header.HeaderWriterFilter@38614875, org.springframework.web.filter.CorsFilter@5c6ee543, org.springframework.security.web.authentication.logout.LogoutFilter@638b05fb, com.example.woori_base.cofig.FilterConfig@2e76ade9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@320ca97c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6d0fe80c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7594d189, org.springframework.security.web.session.SessionManagementFilter@522fc988, org.springframework.security.web.access.ExceptionTranslationFilter@1ce07709, org.springframework.security.web.access.intercept.AuthorizationFilter@5db6083b]
+2024-07-25 17:29:09.001 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-07-25 17:29:09.058 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-07-25 17:29:09.219 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2024-07-25 17:29:09.245 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8083 (http) with context path '/'
+2024-07-25 17:29:09.263 [main] INFO  com.example.woori_base.WooriBaseApplication - Started WooriBaseApplication in 8.785 seconds (process running for 10.527)
+2024-07-25 17:29:17.325 [http-nio-8083-exec-2] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-25 17:29:17.326 [http-nio-8083-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-07-25 17:29:17.326 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2024-07-25 17:29:17.327 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2024-07-25 17:29:17.327 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2024-07-25 17:29:17.328 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@3bb186b
+2024-07-25 17:29:17.329 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@1ae69abe
+2024-07-25 17:29:17.329 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-07-25 17:29:17.329 [http-nio-8083-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2024-07-25 17:29:17.371 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - POST "/check-user", parameters={}
+2024-07-25 17:29:17.373 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.woori_base.controller.MembershipPointController#checkUser(CheckUserReq)
+2024-07-25 17:29:17.496 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [com.example.woori_base.dto.req.CheckUserReq@5de23734]
+2024-07-25 17:29:17.632 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Using @ExceptionHandler com.example.woori_base.exception.HandlerException#handleValidationExceptions(MethodArgumentNotValidException)
+2024-07-25 17:29:17.669 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/xml;charset=UTF-8, text/xml;charset=UTF-8, application/*+xml;charset=UTF-8]
+2024-07-25 17:29:17.671 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [BaseErrorResponse(errorCode=0002, errorMessage=The required field is omitted)]
+2024-07-25 17:29:17.687 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.example.woori_base.dto.res.CheckUserRes com.example.woori_base.controller.MembershipPointController.checkUser(com.example.woori_base.dto.req.CheckUserReq): [Field error in object 'checkUserReq' on field 'membersShipId': rejected value [null]; codes [NotBlank.checkUserReq.membersShipId,NotBlank.membersShipId,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [checkUserReq.membersShipId,membersShipId]; arguments []; default message [membersShipId]]; default message [must not be blank]] ]
+2024-07-25 17:29:17.688 [http-nio-8083-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 400 BAD_REQUEST

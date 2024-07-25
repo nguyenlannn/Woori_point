@@ -22,14 +22,7 @@ public class SecurityConfiguration {
     private static final String[] WHITE_LIST_URL = {"/**",//tạo một list danh sách các url đc đi qua
             "/v2/api-docs",
             "/v3/api-docs",
-            "/v3/api-docs/**",
-            "/swagger-resources",
-            "/swagger-resources/**",
-            "/configuration/ui",
-            "/configuration/security",
-            "/swagger-ui/**",
-            "/webjars/**",
-            "/swagger-ui.html"};
+            "/v3/api-docs/**"};
     private final FilterConfig filterConfig;
     private final AuthenticationProvider authenticationProvider;
 
