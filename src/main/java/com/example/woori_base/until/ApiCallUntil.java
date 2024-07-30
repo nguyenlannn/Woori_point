@@ -41,7 +41,7 @@ public class ApiCallUntil {// dùng để call đến một api của một hệ
         try (Response response = client.newCall(request).execute()) {
             return response.body().string();
         }catch (InternalException | IOException e){
-            throw new InternalException("8012",null,"CoreBanking Timeout");
+            throw new InternalException("8012","CoreBanking Timeout");
         }
     }
 }

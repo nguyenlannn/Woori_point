@@ -21,31 +21,41 @@ public class MembershipPointController {
         return membershipPointService.checkUer(checkUserReq);
     }
 
+    //thực hiện liên kết thành vien đối tác với tài khoản tại woori
     @PostMapping("/connection")
-    public ConnecttionRes connection(@RequestBody ConnecttionReq connecttionReq){
-        return membershipPointService.connection(connecttionReq);
+    public ConnectionRes connection(@RequestBody ConnectionReq connectionReq){
+        return membershipPointService.connection(connectionReq);
     }
-
-    @PostMapping("/secure-registration")
+    //todo đăng kí thành viên woori và thực hiện liên kết-có mã hoá
+    @PostMapping("/secure-registration-encode")
     public SecureRegistrationRes secureRegistration(@RequestBody SecureRegistrationReq secureRegistrationReq){
         return membershipPointService.secureRegistration(secureRegistrationReq);
     }
 
+   //todo đăng kí thành viên woori và thực hiện liên kết-không mã hoá
+    @PostMapping("/secure-registration-no-encode")
+    public SecureRegistrationNoRes secureRegistrationNo(@RequestBody SecureRegistrationNoReq secureRegistrationNoReq){
+        return membershipPointService.secureRegistrationNo(secureRegistrationNoReq);
+    }
+
+    //thực hiện tra cứu thông tin khách hàng tại woori
     @PostMapping("/detail-info-search")
     public DetailInfoRes detailInfoSearch(@RequestBody DetailInfoReq detailInfoReq){
         return membershipPointService.detailInfoSearch(detailInfoReq);
     }
 
+    //thực hiện huỷ liên kết của các thaành viên
     @PostMapping("/disconnection")
-    public DisconnectionRes disconnection(@RequestBody DisconnectionReq disconnectionReq){
-        return membershipPointService.disconnection(disconnectionReq);
+    public void disconnection(@RequestBody DisconnectionReq disconnectionReq){
+        membershipPointService.disconnection(disconnectionReq);
     }
 
+    //tra cứu điểm so còn lại của khách hàng taại woori
     @PostMapping("/points-seeking")
     public PointsSeekingRes pointsSeeking(@RequestBody PointsSeekingReq pointsSeekingReq){
         return membershipPointService.pointsSeeking(pointsSeekingReq);
     }
-
+    // thực hiện chuyển đổi điểm woori point sang đểm cuủa đôối tác
     @PostMapping("/points-usage")
     public PointUsageRes pointUsage(@RequestBody PointUsageReq pointUsageReq){
         return membershipPointService.pointUsage(pointUsageReq);

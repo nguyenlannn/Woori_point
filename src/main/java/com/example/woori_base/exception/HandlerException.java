@@ -46,4 +46,11 @@ public class HandlerException {
         baseErrorResponse.setErrorMessage(errorMessage);
         return new ResponseEntity<>(baseErrorResponse, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(InternalException.class)
+    public ResponseEntity handleInternalExceptions(InternalException ee) {
+        BaseErrorResponse baseErrorResponse=new BaseErrorResponse(ee.getErrorCode(), ee.getMessage());
+        return new ResponseEntity<>(baseErrorResponse, HttpStatus.INTERNAL_SERVER_ERROR);//500
+    }
+
 }

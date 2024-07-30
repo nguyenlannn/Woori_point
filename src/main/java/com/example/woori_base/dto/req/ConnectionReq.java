@@ -11,21 +11,21 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SecureRegistrationReq {
+public class ConnectionReq {
+
+    @Size(max = 64, message = "0031;The required field is omitted. Check the detailed content")
+    @NotBlank
+    private String requestId;
 
     @Size(max = 20, message = "0031;The required field is omitted. Check the detailed content")
     @NotBlank
     private String membershipId;
 
-    @Size(message = "0031;The required field is omitted. Check the detailed content")//ko giới hạn độ dài
+    @Size(max = 30, message = "0031;The required field is omitted. Check the detailed content")
     @NotBlank
-    private String encryptedRequestData;
+    private String customerId;
 
     @Size(max = 16, message = "0031;The required field is omitted. Check the detailed content")
     @NotBlank
-    private String IV;
-
-    @Size(message = "0031;The required field is omitted. Check the detailed content")//ko giới hạn độ dài
-    @NotBlank
-    private String authenticationTag;
+    private String barCode;
 }

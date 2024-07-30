@@ -5,11 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
 @Setter
-@NoArgsConstructor
+@Getter
 @AllArgsConstructor
-public class PointsSeekingRes {
-    private String totalPoints;
-    private String swappablePoints;
+@NoArgsConstructor
+public class SecureRegistrationNoRes {
+    private String customerId;
+    private String membershipLevel;
+    private String membershipPoint;
 }

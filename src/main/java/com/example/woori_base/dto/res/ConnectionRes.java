@@ -7,9 +7,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class PointsSeekingRes {
-    private String totalPoints;
-    private String swappablePoints;
+@NoArgsConstructor
+public class ConnectionRes {
+    private String customerId;
+    private String memberShipLevel;
+    private String membershipPoint;
 }

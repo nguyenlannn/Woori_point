@@ -11,11 +11,9 @@ import lombok.Setter;
 public class InternalException extends RuntimeException {
 
     private String errorCode;
-    private Object data;
 
-    public InternalException(String errorCode,String message, Object data) {
+    public InternalException(String errorCode,String message) {
         super(message);
         this.errorCode=errorCode;
-        this.data=data;
     }
 }

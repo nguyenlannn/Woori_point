@@ -9,13 +9,15 @@ public interface MembershipPointService {
 
     CheckUserRes checkUer(CheckUserReq checkUserReq);
 
-    ConnecttionRes connection(ConnecttionReq connecttionReq);
+    ConnectionRes connection(ConnectionReq connecttionReq);
 
     SecureRegistrationRes secureRegistration(SecureRegistrationReq secureRegistrationReq);
 
+    SecureRegistrationNoRes secureRegistrationNo(SecureRegistrationNoReq secureRegistrationNoReq);
+
     DetailInfoRes detailInfoSearch(DetailInfoReq detailInfoReq);
 
-    DisconnectionRes disconnection(DisconnectionReq disconnectionReq);
+    void disconnection(DisconnectionReq disconnectionReq);
 
     PointsSeekingRes pointsSeeking(PointsSeekingReq pointsSeekingReq);
 
